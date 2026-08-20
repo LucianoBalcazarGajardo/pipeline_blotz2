@@ -73,10 +73,13 @@ def generar_weblogo_desde_fasta(carpeta, proteina, porcentaje):
             "-o", ruta_logo, 
             "-F", "png", 
             "--resolution", "300", 
-            "--title", f"Top {porcentaje}% ARN - {proteina}",
+            "--title", f"Top {porcentaje}% - {proteina}",  # Título más corto
+            "--title-fontsize", "10",                    # NUEVO: Achica la letra del título (por defecto es 12)
+            "--size", "large",                           # NUEVO: Agranda las proporciones de toda la imagen
             "--units", "probability",    
             "--sequence-type", "rna"     
         ]
+        subprocess.run(comando, check=True)
         subprocess.run(comando, check=True)
         print(f"=== PROCESO TERMINADO ===")
         print(f"Archivos guardados:")
